@@ -13,8 +13,8 @@ executando a aplicação, não mexer no mouse.
 import pywhatkit
 import keyboard
 import pandas as pd
-import time
-from datetime import datetime
+from datetime import datetime, timedelta
+from sys import platform
 
 #importar contatos da planilha do excel, colocar o caminho onde se encontra o xlsx.
 contatos = pd.read_excel(r"/Users/foliveira/Desenvolvimento Local/Python/celular.xlsx")
@@ -25,5 +25,9 @@ mensagem = "VAMO AUTOMATIZAR TUDO! Acesse o site https://www.flaviodeoliveira.co
 #definindo intervalo de envio. Lembrando que o nome da coluna do excel nesse exemplo é 
 #celular. Se for outro nome, precisa ser alterado.
 for i in contatos["celular"]:
-    pywhatkit.sendwhatmsg("+55"+str(i), mensagem, datetime.now().hour, datetime.now().minute + 1, 3)
-    keyboard.press_and_release('ctrl + w')
+    horario_envio = datetime.now() + timedelta(minutes=1)
+    pywhatkit.sendwhatmsg("+55"+str(i), mensagem, horario_envio.hour, horario_envio.minute, 3)
+    if platform == 'darwin':
+        keyboard.press_and_release('command + w')
+    else:
+        keyboard.press_and_release('ctrl + w')

@@ -10,6 +10,9 @@ https://www.github.com/oliveiradeflavio
 #importação de lib
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.firefox.service import Service as FirefoxService
+from webdriver_manager.firefox import GeckoDriverManager
 import time
 import random
 from PySimpleGUI import PySimpleGUI as sg
@@ -21,7 +24,7 @@ class instagramBot:
         self.username = username
         self.password = password
         self.verificacaoCodigo = verificacaoCodigo
-        self.driver = webdriver.Firefox(executable_path=" ") #caminho de onde está a biblioteca geckodriver 
+        self.driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
 
     def login(self):
         driver = self.driver
@@ -30,16 +33,16 @@ class instagramBot:
         #input[@name=password] = senha inspecionado na pagina instagram
         #input[@name=verificationCode] = verificaçao de codigo em autenticaçao de dois fatores
         time.sleep(3)
-        campo_usuario = driver.find_element_by_xpath("//input[@name='username']")
+        campo_usuario = driver.find_element(By.XPATH, "//input[@name='username']")
         campo_usuario.click()
         campo_usuario.clear()
         campo_usuario.send_keys(self.username)
-        campo_senha = driver.find_element_by_xpath("//input[@name='password']")
+        campo_senha = driver.find_element(By.XPATH, "//input[@name='password']")
         campo_senha.clear()
         campo_senha.send_keys(self.password)
         campo_senha.send_keys(Keys.RETURN)
         time.sleep(3)
-        campo_verificacao_codigo = driver.find_element_by_xpath("//input[@name='verificationCode']")
+        campo_verificacao_codigo = driver.find_element(By.XPATH, "//input[@name='verificationCode']")
         campo_verificacao_codigo.click()
         campo_verificacao_codigo.clear()
         campo_verificacao_codigo.send_keys(self.verificacaoCodigo)
@@ -59,7 +62,7 @@ class instagramBot:
         driver.get("https://www.instagram.com/p/CO6ipgjrhzV")
         time.sleep(3)
         #curti o post do sorteio
-        curtir_post = driver.find_element_by_xpath("//span[@class='_aamw']")
+        curtir_post = driver.find_element(By.XPATH, "//span[@class='_aamw']")
         curtir_post.click()
         print("Like")
         time.sleep(2)
@@ -72,7 +75,7 @@ class instagramBot:
             tamanho = len(self.lista_seguidores['username']) # para publicar 2 comentário ou mais mude a variavel 2 do range
             for perfil_seguidores in range(0, tamanho, 2): #nesse caso estamos publicando 2 comentários por vez
                 time.sleep(5)      
-                campo_comentario = driver.find_element_by_css_selector("[placeholder='Adicione um comentário...']")
+                campo_comentario = driver.find_element(By.CSS_SELECTOR, "[placeholder='Adicione um comentário...']")
                 time.sleep(random.randint(2,5))
                 #para comentar mais que 2 comentário, altere a variavel 2 do range(0, tamanho, 2) para o número de comentário que você deseja
                 #adicione a quantidade correspondente ao número de comentários self.lista_seguidores['username'][perfil_seguidores+1] na função digitando_como_humano

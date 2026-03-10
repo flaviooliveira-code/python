@@ -1,81 +1,41 @@
 
-[![LinkedIn][linkedin-shield]][linkedin-url]
-![GitHub forks](https://img.shields.io/github/forks/oliveiradeflavio/python?style=for-the-badge)
-![GitHub User's stars](https://img.shields.io/github/stars/oliveiradeflavio?style=for-the-badge)
-![GitHub followers](https://img.shields.io/github/followers/oliveiradeflavio?style=for-the-badge)
+<h3 align="center">Bots para Instagram</h3>
 
+## Sobre
 
-<h3 align="center">BOT PARA INSTAGRAM</h3>
+Colecao de scripts para automacao no Instagram com Python e Selenium.
 
+## Scripts
 
-<!-- ABOUT THE PROJECT -->
-## Sobre o Projeto
+| Arquivo | Objetivo |
+| --- | --- |
+| `instagrambot.py` | Comenta em posts a partir de hashtag. |
+| `instagram_curtir_fotos.py` | Curte fotos de uma hashtag. |
+| `instagrambot_baixa_seguidores.py` | Coleta seguidores e comenta em sorteio. |
+| `instagrambot_segue_following.py` | Segue perfis da lista de seguindo de uma conta. |
+| `instagrambot_seguidores_lista_excel_mais_que_1_comentario.py` | Comenta marcando usuarios de uma planilha. |
 
-A aplicação irá fazer o login no Instagram, irá escolher uma hashtag e irá comentar nas fotos baseado nessa hastag.
-A segunda aplicação bot para sorteio irá baixar os seguidores e no sorteio escolhido irá fazer o comentário usando o @ dos seguidores baixado.
+## Pre-requisitos
 
-### Construído com
+- Python 3.9+
+- Firefox instalado
 
-* [Python](https://www.python.org/)
-* [PySimpleGUI](https://pysimplegui.readthedocs.io)
-* [Selenium](https://www.selenium.dev/)
-* [Geckodriver](https://github.com/mozilla/geckodriver/releases)
+## Instalacao
 
-
-<!-- GETTING STARTED -->
-## Começando
-
-A aplicação disponivel para mac OS, Linux e Windows. Seguir os passos abaixo para poder fazer a instalação. 
-
-
-### Pré-requisitos
-
-Antes de tudo você precisa ter o Python instalado no seu computador. Então vá até o site e baixe a versão 3.9 ou superior.
-* python
-  ```sh
-  https://www.python.org/
-  ```
-
-Antes de executar o código, seu whatsapp Web precisa estar conectado no celular e logado no navegador Chrome, no meu teste usei o Chrome. Depois que estiver executando a aplicação, não mexer no mouse.
-
-### Instalação de bibliotecas
-
-Instalar as bibliotecas abaixo é obrigado para o funcionamento do script.
-```sh
-https://github.com/mozilla/geckodriver/releases
-```
-```sh
-pip install selenium
-```
-```sh
-pip install PySimpleGUI
+```bash
+pip install selenium webdriver-manager pysimplegui pandas openpyxl
 ```
 
-### Demo
+## Execucao
 
-[BOT_COMENTANDO](https://www.linkedin.com/posts/fladoliveira_pythondeveloper-activity-6798436536032489472-o5Kb)
+1. Entre na pasta: `cd instagrambot`
+2. Execute o script desejado, por exemplo:
 
-[BOT_COMENTANDO_EM_SORTEIO](https://www.linkedin.com/posts/fladoliveira_ai-python-instagram-activity-6800643572522610688-1R06)
+```bash
+python3 instagrambot.py
+```
 
+## Observacoes
 
-
-<!-- ROADMAP -->
-## Roadmap
-
-Veja os [problemas abertos] (https://github.com/oliveiradeflavio/python/issues) para uma lista de recursos propostos (e problemas conhecidos).
-
-
-<!-- CONTACT -->
-## Contato
-
-Flávio Oliveira - [LinkedIn](https://www.linkedin.com/in/fladoliveira/)
-
-Link do Repositório: [https://github.com/oliveiradeflavio/python](https://github.com/oliveiradeflavio/pythone)
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/fladoliveira/
-
+- Os scripts usam Selenium 4 com `webdriver-manager` para baixar e gerenciar o `geckodriver` automaticamente.
+- A interface e os seletores do Instagram mudam com frequencia; pode ser necessario ajustar XPaths/CSS ao longo do tempo.

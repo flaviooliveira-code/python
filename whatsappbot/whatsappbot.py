@@ -7,12 +7,14 @@ from selenium import webdriver
 import time
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service as ChromeService
 
 #navegar até o whatsApp Web
 #ch_option.add_argument, para usar o profile do google com cache, assim evita de ficar pedindo o qrcode.
 ch_options = webdriver.ChromeOptions()
 ch_options.add_argument("--user-data-dir=endereço url perfil chrome")
-driver = webdriver.Chrome(ChromeDriverManager().install(), options=ch_options)
+driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=ch_options)
 driver.get('https://web.whatsapp.com/')
 time.sleep(10)
 
@@ -24,14 +26,14 @@ mensagem = 'Olá, eu sou um bot whatsApp.'
 #campo de pesquisa 'copyable-text selectable-text'
 #campo digitar mensagem 'copyable-text selectable-text'
 def buscar_contato(contato):
-    campo_pesquisa = driver.find_element_by_xpath('//div[contains(@class,"copyable-text selectable-text")]')
+    campo_pesquisa = driver.find_element(By.XPATH, '//div[contains(@class,"copyable-text selectable-text")]')
     #time.sleep(3)
     campo_pesquisa.click()
     campo_pesquisa.send_keys(contato)
     campo_pesquisa.send_keys(Keys.ENTER)
 
 def enviar_mensagem(mensagem):
-    campo_mensagem = driver.find_elements_by_xpath('//div[contains(@class,"copyable-text selectable-text")]')
+    campo_mensagem = driver.find_elements(By.XPATH, '//div[contains(@class,"copyable-text selectable-text")]')
     campo_mensagem[1].click()
     campo_mensagem[1].send_keys(mensagem)
     campo_mensagem[1].send_keys(Keys.ENTER)

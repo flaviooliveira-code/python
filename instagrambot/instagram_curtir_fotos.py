@@ -10,6 +10,9 @@ www.flaviodeoliveira.com.br
 #importação de lib
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.firefox.service import Service as FirefoxService
+from webdriver_manager.firefox import GeckoDriverManager
 import time
 import random
 from PySimpleGUI import PySimpleGUI as sg
@@ -20,7 +23,7 @@ class instagramBot:
         self.password = password
         self.hashtag_procurar = hashtag_procurar
         self.verificacaoCodigo = verificacaoCodigo
-        self.driver = webdriver.Firefox(executable_path="/Users/foliveira/github/python/instagrambot/geckodriver") #caminho de onde está a biblioteca geckodriver
+        self.driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
 
     def login(self):
         driver = self.driver
@@ -29,16 +32,16 @@ class instagramBot:
         #input[@name=password] = senha inspecionado na pagina instagram
         #input[@name=verificationCode] = verificaçao de codigo em autenticaçao de dois fatores
         time.sleep(3)
-        campo_usuario = driver.find_element_by_xpath("//input[@name='username']")
+        campo_usuario = driver.find_element(By.XPATH, "//input[@name='username']")
         campo_usuario.click()
         campo_usuario.clear()
         campo_usuario.send_keys(self.username)
-        campo_senha = driver.find_element_by_xpath("//input[@name='password']")
+        campo_senha = driver.find_element(By.XPATH, "//input[@name='password']")
         campo_senha.clear()
         campo_senha.send_keys(self.password)
         campo_senha.send_keys(Keys.RETURN)
         time.sleep(3)
-        campo_verificacao_codigo = driver.find_element_by_xpath("//input[@name='verificationCode']")
+        campo_verificacao_codigo = driver.find_element(By.XPATH, "//input[@name='verificationCode']")
         campo_verificacao_codigo.click()
         campo_verificacao_codigo.clear()
         campo_verificacao_codigo.send_keys(self.verificacaoCodigo)
@@ -57,7 +60,7 @@ class instagramBot:
             time.sleep(5)
         
         #pegando os link das imagens que estão nas páginas
-        hrefs = driver.find_elements_by_tag_name('a')
+        hrefs = driver.find_elements(By.TAG_NAME, 'a')
         imagem_hrefs = [elem.get_attribute('href') for elem in hrefs]
         [href for href in imagem_hrefs if hashtag in href]
         print('Hashtag: ' + hashtag + ' QNT Fotos: ' + str(len(imagem_hrefs)))
@@ -67,7 +70,7 @@ class instagramBot:
             driver.execute_script('window.scrollTo(0, document.body.scrollHeight);')
             try:
                 time.sleep(5)
-                curtir_post = driver.find_element_by_xpath("//span[@class='_aamw']")
+                curtir_post = driver.find_element(By.XPATH, "//span[@class='_aamw']")
                 curtir_post.click() #CURTI FOTO
                 print("Quantidade de Likes: " + str(qnt_likes))
                 qnt_likes = qnt_likes + 1

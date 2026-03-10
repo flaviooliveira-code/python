@@ -10,9 +10,11 @@ https://www.github.com/oliveiradeflavio
 
 
 #importação de lib
-from typing import Sized
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.firefox.service import Service as FirefoxService
+from webdriver_manager.firefox import GeckoDriverManager
 import time
 import random
 from PySimpleGUI import PySimpleGUI as sg
@@ -23,7 +25,7 @@ class instagramBot:
         self.password = password
         self.hashtag_procurar = hashtag_procurar
         self.verificacaoCodigo = verificacaoCodigo
-        self.driver = webdriver.Firefox(executable_path="/Users/foliveira/github/python/instagrambot/geckodriver") #caminho de onde está a biblioteca geckodriver
+        self.driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
 
     def login(self):
         driver = self.driver
@@ -32,16 +34,16 @@ class instagramBot:
         #input[@name=password] = senha inspecionado na pagina instagram
         #input[@name=verificationCode] = verificaçao de codigo em autenticaçao de dois fatores
         time.sleep(3)
-        campo_usuario = driver.find_element_by_xpath("//input[@name='username']")
+        campo_usuario = driver.find_element(By.XPATH, "//input[@name='username']")
         campo_usuario.click()
         campo_usuario.clear()
         campo_usuario.send_keys(self.username)
-        campo_senha = driver.find_element_by_xpath("//input[@name='password']")
+        campo_senha = driver.find_element(By.XPATH, "//input[@name='password']")
         campo_senha.clear()
         campo_senha.send_keys(self.password)
         campo_senha.send_keys(Keys.RETURN)
         time.sleep(3)
-        campo_verificacao_codigo = driver.find_element_by_xpath("//input[@name='verificationCode']")
+        campo_verificacao_codigo = driver.find_element(By.XPATH, "//input[@name='verificationCode']")
         campo_verificacao_codigo.click()
         campo_verificacao_codigo.clear()
         campo_verificacao_codigo.send_keys(self.verificacaoCodigo)
@@ -67,7 +69,7 @@ class instagramBot:
             time.sleep(5)
         
         #pegando os link das imagens que estão nas páginas
-        hrefs = driver.find_elements_by_tag_name('a')
+        hrefs = driver.find_elements(By.TAG_NAME, 'a')
         imagem_hrefs = [elem.get_attribute('href') for elem in hrefs]
         [href for href in imagem_hrefs if hashtag in href]
         print('Hashtag: ' + hashtag + ' QNT Fotos: ' + str(len(imagem_hrefs)))
@@ -79,20 +81,20 @@ class instagramBot:
             try:
                 time.sleep(5)
                 comentarios = ["Caramba! Tá top!🤖","Essa foto ficou demais viu!🤖", "Só fooootão🤖","Curti muito essa foto!🤖","Que fotão!!!!🤖","Tooooop!!!🤖","Eitaaaaaa que foto =D🤖"]
-                #driver.find_element_by_class_name('_aaoa').click() //abre a opção de emoticons
-                curtir_post = driver.find_element_by_xpath("//span[@class='_aamw']")
+                #driver.find_element(By.CLASS_NAME, '_aaoa').click() //abre a opção de emoticons
+                curtir_post = driver.find_element(By.XPATH, "//span[@class='_aamw']")
                 curtir_post.click()
                 print("Like")
                 time.sleep(2)
-                #campo_comentario = driver.find_element_by_class_name('_aaoa')
-                driver.find_element_by_css_selector("[placeholder='Adicione um comentário...']").click()
-                campo_comentario = driver.find_element_by_css_selector("[placeholder='Adicione um comentário...']")
+                #campo_comentario = driver.find_element(By.CLASS_NAME, '_aaoa')
+                driver.find_element(By.CSS_SELECTOR, "[placeholder='Adicione um comentário...']").click()
+                campo_comentario = driver.find_element(By.CSS_SELECTOR, "[placeholder='Adicione um comentário...']")
                 time.sleep(random.randint(2,5))
                 #chama a função para que seja digitando mais lento ou mais rapido "como humano e não um bot"
                 self.digitando_como_humano(random.choice(comentarios), campo_comentario)
                 #o ideal é colocar um valor maior, para que não seja identificado como bot.
                 time.sleep(random.randint(10,20))
-                #driver.find_element_by_xpath("//button[contains(text(), 'Publicar')]").click()
+                #driver.find_element(By.XPATH, "//button[contains(text(), 'Publicar')]").click()
                 campo_comentario.send_keys(Keys.RETURN)
                 time.sleep(3)
             except Exception as e:

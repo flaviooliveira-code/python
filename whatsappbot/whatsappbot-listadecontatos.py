@@ -12,15 +12,19 @@ executando a aplicação, não mexer no mouse.
 #importar as bibliotecas
 import pywhatkit
 import keyboard
-import time
-from datetime import datetime
+from datetime import datetime, timedelta
+from sys import platform
 
 #definir para quais contatos ou de uma lista de excel
 contatos = ["+5519999999999", "+5519999999999", "+5519999999999", "+5519999999999"]
 
 #definindo intervalo de envio
 while len(contatos) >= 1:
+    horario_envio = datetime.now() + timedelta(minutes=1)
     #envia mensagem
-    pywhatkit.sendwhatmsg(contatos[0], 'Olá, eu sou uma mensagem automática', datetime.now().hour,datetime.now().minute + 1)
+    pywhatkit.sendwhatmsg(contatos[0], 'Olá, eu sou uma mensagem automática', horario_envio.hour, horario_envio.minute)
     del contatos[0]
-    keyboard.press_and_release('ctrl + w')
+    if platform == 'darwin':
+        keyboard.press_and_release('command + w')
+    else:
+        keyboard.press_and_release('ctrl + w')
