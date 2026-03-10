@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# macOS folders
+.Spotlight-V100
+.Trashes
+.fseventsd
+
+# macOS metadata on external/network volumes
+._*
+.DocumentRevisions-V100
+.TemporaryItems
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent

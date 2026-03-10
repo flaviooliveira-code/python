@@ -1,32 +1,24 @@
 
-[![LinkedIn][linkedin-shield]][linkedin-url]
-![GitHub forks](https://img.shields.io/github/forks/oliveiradeflavio/python?style=for-the-badge)
-![GitHub User's stars](https://img.shields.io/github/stars/oliveiradeflavio?style=for-the-badge)
-![GitHub followers](https://img.shields.io/github/followers/oliveiradeflavio?style=for-the-badge)
 
+<h3 align="center">Projetos em Python</h3>
 
-<h3 align="center">PROJETOS UTILIZANDO A LINGUAGEM PYTHON</h3>
+## Sobre
 
+Este repositório reúne scripts e automações desenvolvidos em Python para estudo, testes e uso prático.
 
-<!-- ABOUT THE PROJECT -->
-## Sobre 
+## Estrutura do repositório
 
-[![tela inicial][product-screenshot]]()
+| Projeto | Descrição |
+| --- | --- |
+| `busca_automatica_google/` | Automação de busca no Google. |
+| `instagrambot/` | Scripts relacionados a automação no Instagram. |
+| `whatsappbot/` | Bot e automações para WhatsApp. |
+| `wppmessage/` | Variações de envio de mensagens no WhatsApp. |
+| `decifra_base64.py` | Script utilitário para decodificação Base64. |
 
-Nesse repositório estarei deixando toda aplicação feita com esta linguagem. 
+## Como usar
 
-
-<!-- CONTACT -->
-## Contato
-
-Flávio Oliveira - [LinkedIn](https://www.linkedin.com/in/fladoliveira/)
-
-Link do Projeto: [https://github.com/oliveiradeflavio/python](https://github.com/oliveiradeflavio/python)
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/fladoliveira/
-[product-screenshot]: https://www.python.org/static/community_logos/python-logo-master-v3-TM.png
+1. Entre na pasta do projeto desejado (`cd nome-do-projeto`).
+2. Leia o `README.md` local, quando existir.
+3. Instale as dependências necessárias.
+4. Execute o script principal conforme as instruções do projeto.
