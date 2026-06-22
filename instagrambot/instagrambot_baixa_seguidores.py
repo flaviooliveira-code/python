@@ -3,7 +3,7 @@ Esse bot irá pegar os seguidores da conta e fazer o comentário com esses segui
 em um post de sorteio do instagram
 
 Flávio Oliviera - 2021
-https://www.github.com/oliveiradeflavio
+https://github.com/flaviooliveira-code
 """
 
 
