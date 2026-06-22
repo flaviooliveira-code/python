@@ -23,7 +23,7 @@ Colecao de scripts para automacao no Instagram com Python e Selenium.
 ## Instalacao
 
 ```bash
-pip install selenium webdriver-manager pysimplegui pandas openpyxl
+pip install -r requirements.txt
 ```
 
 ## Execucao

@@ -1,8 +1,7 @@
 # import das bibs
-from random import random
-from select import select
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -28,8 +27,8 @@ class Busca:
         chrome_options.add_argument("--disable-dev-shm-usage")
         chrome_options.add_argument("--disable-gpu")
         chrome_options.add_argument("--disable-extensions")
-        chrome_options.add_argument("--disable-notifications")    
-        self.driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
+        chrome_options.add_argument("--disable-notifications")
+        self.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
 
     def pesquisar(self):
         driver = self.driver
@@ -45,12 +44,12 @@ class Busca:
         time.sleep(3)
 
         try:
-            driver.switch_to.frame(driver.find_element_by_id("yDmH0d"))
-            driver.find_element_by_id("yDmH0d").send_keys(Keys.ESCAPE)
+            driver.switch_to.frame(driver.find_element(By.ID, "yDmH0d"))
+            driver.find_element(By.ID, "yDmH0d").send_keys(Keys.ESCAPE)
         except:
             pass
 
-        campo_pesquisa_google = driver.find_element_by_tag_name("textarea")
+        campo_pesquisa_google = driver.find_element(By.TAG_NAME, "textarea")
         campo_pesquisa_google.click()
         campo_pesquisa_google.clear()
 
@@ -62,7 +61,7 @@ class Busca:
 
         # verifica se o texto existe na página e se exister vou clicar nele, isso se ele for igual a variavel quero_esse_link
         if self.existe_texto(self.quero_esse_link):
-            links = driver.find_elements_by_tag_name("a")
+            links = driver.find_elements(By.TAG_NAME, "a")
             for link in links:
                 if self.quero_esse_link in link.text:
                     link.click()
@@ -83,7 +82,7 @@ class Busca:
                         driver.find_element(By.ID, "pnnext").click()
                         time.sleep(3)
                         if self.existe_texto(self.quero_esse_link):
-                            links = driver.find_elements_by_tag_name("a")
+                            links = driver.find_elements(By.TAG_NAME, "a")
                             for link in links:
                                 if self.quero_esse_link in link.text:
                                     link.click()
@@ -104,8 +103,8 @@ class Busca:
         driver = self.driver
         driver.get('https://www.proxysite.com/pt/') # abre a página do proxy
         time.sleep(5)
-        select = Select(driver.find_element_by_class_name('server-option')) # seleciona o servidor
-       
+        select = Select(driver.find_element(By.CLASS_NAME, 'server-option')) # seleciona o servidor
+
         # select.select_by_value('us1') # seleciona o servidor
         todos_servidores = [x.get_attribute('value') for x in select.options] # pega todos os servidores
         #print(todos_servidores)
@@ -124,7 +123,7 @@ class Busca:
                 break
             numero_servidor += 1
 
-        campo_proxy_input = driver.find_element_by_tag_name("input")# seleciona o campo de input do proxy
+        campo_proxy_input = driver.find_element(By.TAG_NAME, "input")# seleciona o campo de input do proxy
         campo_proxy_input.click()
         campo_proxy_input.clear()
         campo_proxy_input.send_keys(self.url)
@@ -140,7 +139,7 @@ class Busca:
             self.proxy()
             time.sleep(5)
 
-        campo_pesquisa_google = driver.find_element_by_css_selector('[title="Search"]')
+        campo_pesquisa_google = driver.find_element(By.CSS_SELECTOR, '[title="Search"]')
         campo_pesquisa_google.click()
         campo_pesquisa_google.clear()
 
@@ -154,7 +153,7 @@ class Busca:
     
             # verifica se o texto existe na página e se exister vou clicar nele, isso se ele for igual a variavel quero_esse_link
             if self.existe_texto(self.quero_esse_link):
-                links = driver.find_elements_by_tag_name("a")
+                links = driver.find_elements(By.TAG_NAME, "a")
                 for link in links:
                     if self.quero_esse_link in link.text:
                         link.click()
@@ -174,7 +173,7 @@ class Busca:
                         driver.find_element(By.ID, "pnnext").click()
                         time.sleep(3)
                         if self.existe_texto(self.quero_esse_link):
-                            links = driver.find_elements_by_tag_name("a")
+                            links = driver.find_elements(By.TAG_NAME, "a")
                             for link in links:
                                 if self.quero_esse_link in link.text:
                                     link.click()

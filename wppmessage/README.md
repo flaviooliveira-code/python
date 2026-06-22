@@ -20,7 +20,7 @@ Aplicacao desktop em Python para agendamento e envio de mensagens no WhatsApp, c
 ## Instalacao
 
 ```bash
-pip install pywhatkit pandas openpyxl xlrd pyqt5 keyboard
+pip install -r requirements.txt
 ```
 
 ## Execucao

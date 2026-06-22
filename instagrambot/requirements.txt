@@ -1,0 +1,5 @@
+openpyxl
+pandas
+PySimpleGUI
+selenium
+webdriver-manager

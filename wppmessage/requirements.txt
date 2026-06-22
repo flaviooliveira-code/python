@@ -1,0 +1,6 @@
+keyboard
+openpyxl
+pandas
+PyQt5
+pywhatkit
+xlrd

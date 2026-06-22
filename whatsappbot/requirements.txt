@@ -1,0 +1,6 @@
+keyboard
+openpyxl
+pandas
+pywhatkit
+selenium
+webdriver-manager

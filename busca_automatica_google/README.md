@@ -8,7 +8,7 @@ Bot em Python que automatiza buscas no Google com palavras-chave predefinidas.
 
 | Arquivo | Objetivo |
 | --- | --- |
-| `busca_automatica_google.py` | Executa buscas automatizadas e navegacao conforme regras do script. |
+| `busca_google.py` | Executa buscas automatizadas e navegacao conforme regras do script. |
 
 ## Pre-requisitos
 
@@ -18,7 +18,7 @@ Bot em Python que automatiza buscas no Google com palavras-chave predefinidas.
 ## Instalacao
 
 ```bash
-pip install selenium webdriver-manager
+pip install -r requirements.txt
 ```
 
 ## Execucao
@@ -29,7 +29,7 @@ cd busca_automatica_google
 ```
 2. Execute o script principal:
 ```bash
-python3 busca_automatica_google.py
+python3 busca_google.py
 ```
 
 ## Observacoes

@@ -22,7 +22,7 @@ Scripts para envio automatizado de mensagens no WhatsApp Web.
 ## Instalacao
 
 ```bash
-pip install selenium webdriver-manager pywhatkit keyboard pandas openpyxl
+pip install -r requirements.txt
 ```
 
 ## Execucao

@@ -14,3 +14,32 @@
 .TemporaryItems
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Local logs and runtime files
+*.log
+*.tmp
+*.bak
+
+# IDE/editor
+.idea/
+.vscode/
