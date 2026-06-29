@@ -1,7 +1,4 @@
-"""
-Flávio Oliveira - 2021
-https://github.com/flaviooliveira-code
-"""
+
 #importar as bibliotecas
 from selenium import webdriver
 import time

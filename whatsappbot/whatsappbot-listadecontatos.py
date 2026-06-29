@@ -1,7 +1,4 @@
-"""
-Flávio Oliveira - 2021
-https://github.com/flaviooliveira-code
-"""
+
 
 """
 Antes de executar o código, seu whatsapp Web precisa estar conectado no celular

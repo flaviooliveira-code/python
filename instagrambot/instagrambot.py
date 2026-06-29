@@ -4,8 +4,7 @@ de hashtag.
 O teste foi feito, foi em um instagram que possui a autenticação 2 fatores, 
 por isso temos a parte de digitação da verificação de código.
 
-Flávio Oliviera - 2021
-https://github.com/flaviooliveira-code
+
 """
 
 

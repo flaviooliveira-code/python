@@ -2,8 +2,7 @@
 Esse bot irá pegar os seguidores da conta e fazer o comentário com esses seguidores (username)
 em um post de sorteio do instagram
 
-Flávio Oliviera - 2021
-https://github.com/flaviooliveira-code
+
 """
 
 
